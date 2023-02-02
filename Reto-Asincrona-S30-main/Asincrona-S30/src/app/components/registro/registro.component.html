@@ -1,0 +1,34 @@
+<section class="container py-5 h-100">
+  <section class="row d-flex justify-content-center h-100">
+    <section class="col-12 col-md-12 col-lg-10 col-xl-5">
+      <section class="card shadow-2-strong">
+        <section class="card-body p-5">
+          <h1 class="text-center mb-4">Registrar Usuario</h1>
+            <form [formGroup]="registroUsuario" (ngSubmit)="onSubmit()">
+                <mat-form-field class="w-100">
+                  <mat-label>Name</mat-label>
+                  <input matInput type="text" formControlName="nombre" name="nombre">
+                </mat-form-field>
+
+                <br>
+                <mat-form-field class="w-100">
+                  <mat-label>Username</mat-label>
+                  <input matInput type="text" formControlName="usuario" name="usuario">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="w-100">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" formControlName="password" name="password">
+                </mat-form-field>
+                <br>
+
+                <button id="btnSubmit" class="text-center w-100 mb-3" mat-raised-button type="submit" color="primary">Guardar</button>
+
+                <p *ngIf="mensaje" class="alert alert-success text-center mb-3">{{ mensaje }}</p>
+                
+              </form>
+          </section>
+        </section>
+      </section>
+    </section>
+</section>

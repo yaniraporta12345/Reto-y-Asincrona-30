@@ -1,0 +1,129 @@
+<section class="container py-5 h-100">
+    <section class="row d-flex justify-content-center h-100">
+      <section class="col-12 col-md-12 col-lg-10 col-xl-5">
+        <section class="card shadow-2-strong border border-primary">
+          <section class="card-body p-5">
+            <h3 class="text-center mb-4">Formulario de Registro</h3>
+  
+            <p *ngIf="mensaje" class="alert alert-danger text-center">{{ mensaje }}</p>
+  
+            <form [formGroup]="registroPersonas" (ngSubmit)="onSubmit()">
+  
+              <section class="form-group mb-3">
+                <label for="nombre">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  name="nombre"
+                  placeholder="Ingrese su nombre"
+                  formControlName="nombre"/>
+                <section *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)">
+                  <section *ngIf="nombre?.errors?.['required']" class="alert alert-danger">
+                    El nombre es obligatorio
+                  </section>
+                  <section *ngIf="nombre?.errors?.['pattern']" class="alert alert-danger">
+                    El nombre solo permite ingresar letras
+                  </section>              
+                </section>
+              </section>
+
+              <section class="form-group mb-3">
+                <label for="nombre">Apellido</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="apellido"
+                  name="apellido"
+                  placeholder="Ingrese su apellido"
+                  formControlName="apellido"/>
+                <section *ngIf="apellido?.invalid && (apellido?.dirty || apellido?.touched)">
+                  <section *ngIf="apellido?.errors?.['required']" class="alert alert-danger">
+                    El apellido es obligatorio
+                  </section>
+                  <section *ngIf="apellido?.errors?.['pattern']" class="alert alert-danger">
+                    El apellido solo permite ingresar letras
+                  </section>              
+                </section>
+              </section>
+  
+              <section class="form-group mb-3">
+                <label for="dni">Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="Ingrese su email"
+                  formControlName="email"/>
+                <section *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                  <section *ngIf="email?.errors?.['required'] || email?.errors?.['email']" class="alert alert-danger">
+                    El valor es obligatorio.
+                  </section>
+                </section>
+              </section>
+  
+              <section class="form-group mb-3">
+                <label for="nombre">Website</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="webiste"
+                  name="website"
+                  placeholder="Ingrese su sitio web"
+                  formControlName="website"/>
+                <section *ngIf="website?.invalid && (website?.dirty || website?.touched)">
+                  <section *ngIf="website?.errors?.['required']" class="alert alert-danger">
+                    El sitio web  es obligatorio
+                  </section>             
+                </section>
+              </section>
+  
+                <section class="form-group text-center">
+                  <input type="submit" class="btn btn-primary btn-lg" value="Registrar"/>
+                </section>
+  
+            </form>
+          </section>
+        </section>
+      </section>
+    </section>
+</section>
+
+<section class="container py-5 h-100">
+  <section class="row d-flex justify-content-center h-100">
+      <section class="col-12 col-md-12 col-lg-10 col-xl-10">
+        <section class="card shadow-2-strong border border-primary">
+            <section class="card-body p-5">
+              <h3 class="text-center mb-4">Lista del Registro</h3>
+              <table class="table table-hover border text-center">
+                <thead class="bg-primary text-white">
+                  <tr>
+                    <th>Item</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Websiste</th>
+                    <th>Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody class="fw-bold">
+                  <tr *ngFor="let item of datosAgregar let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <th>{{ item.Nombre | titlecase}}</th>
+                    <th>{{ item.Apellido | titlecase}}</th>
+                    <th>{{ item.Email  | titlecase}}</th>
+                    <th>{{ item.Website  | titlecase}}</th>
+                    <td>
+                      <button class=" btn btn-sm btn-danger" value="{{ 1 }}" (click)="Eliminar(i)">
+                        <i class="far fa-trash-alt"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </section>  
+      </section>
+    </section>
+  </section> 

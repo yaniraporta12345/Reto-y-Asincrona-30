@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+    <div>
+        <a mat-button class="navbar-brand text-white" href="#">My App</a>
+    </div>
+    <div class="m-3">
+      <a mat-button routerLink="registro">Registro</a>
+
+      <a mat-button routerLink="login" *ngIf="!usuarioLogueado">Login</a>
+      <a mat-button routerLink="login" *ngIf="usuarioLogueado" (click)="logout()">Logout</a>
+
+    </div>
+  </mat-toolbar>
+  
